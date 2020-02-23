@@ -1,38 +1,20 @@
 package org.octopus.api.service;
 
-import java.util.List;
-import java.util.Optional;
-
 import org.apache.commons.lang3.StringUtils;
 import org.octopus.api.entity.RoleEntity;
 import org.octopus.api.repository.RoleRepository;
+import org.octopus.api.service.common.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-public class RoleService {
+public class RoleService extends AbstractService<RoleEntity, String> {
 	@Autowired
-	private RoleRepository roleRepository;
-
-	public Optional<RoleEntity> find(String id) {
-		return roleRepository.findById(id);
-	}
-
-	public List<RoleEntity> findAll() {
-		return roleRepository.findAll();
-	}
-
-	public Page<RoleEntity> findAll(Pageable pageable) {
-		return roleRepository.findAll(pageable);
-	}
-
-	public void remove(String id) {
-		roleRepository.deleteById(id);
+	public void setRepository(RoleRepository roleRepository) {
+		this.repository = roleRepository;
 	}
 
 	public RoleEntity save(RoleEntity entity) {
@@ -49,12 +31,12 @@ public class RoleService {
 	}
 
 	private RoleEntity create(RoleEntity entity) {
-		RoleEntity newEntity = roleRepository.saveAndFlush(entity);
+		RoleEntity newEntity = repository.saveAndFlush(entity);
 		return newEntity;
 	}
 
 	private RoleEntity update(RoleEntity entity) {
-		RoleEntity newEntity = roleRepository.saveAndFlush(entity);
+		RoleEntity newEntity = repository.saveAndFlush(entity);
 		return newEntity;
 	}
 }

@@ -15,6 +15,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
+/**
+ * 
+ * @author joshualeng
+ *
+ */
 public class ComponentDto {
 	private String id;
 

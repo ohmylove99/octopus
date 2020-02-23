@@ -1,38 +1,20 @@
 package org.octopus.api.service;
 
-import java.util.List;
-import java.util.Optional;
-
 import org.apache.commons.lang3.StringUtils;
 import org.octopus.api.entity.UserEntity;
 import org.octopus.api.repository.UserRepository;
+import org.octopus.api.service.common.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-public class UserService {
+public class UserService extends AbstractService<UserEntity, String> {
 	@Autowired
-	private UserRepository userRepository;
-
-	public Optional<UserEntity> find(String id) {
-		return userRepository.findById(id);
-	}
-
-	public List<UserEntity> findAll() {
-		return userRepository.findAll();
-	}
-
-	public Page<UserEntity> findAll(Pageable pageable) {
-		return userRepository.findAll(pageable);
-	}
-
-	public void remove(String id) {
-		userRepository.deleteById(id);
+	public void setRepository(UserRepository roleRepository) {
+		this.repository = roleRepository;
 	}
 
 	public UserEntity save(UserEntity entity) {
@@ -49,12 +31,12 @@ public class UserService {
 	}
 
 	private UserEntity create(UserEntity entity) {
-		UserEntity newEntity = userRepository.saveAndFlush(entity);
+		UserEntity newEntity = repository.saveAndFlush(entity);
 		return newEntity;
 	}
 
 	private UserEntity update(UserEntity entity) {
-		UserEntity newEntity = userRepository.saveAndFlush(entity);
+		UserEntity newEntity = repository.saveAndFlush(entity);
 		return newEntity;
 	}
 }

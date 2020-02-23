@@ -4,6 +4,11 @@ import java.util.Optional;
 
 import org.springframework.data.domain.AuditorAware;
 
+/**
+ * 
+ * @author joshualeng
+ *
+ */
 //if you are using Spring Security, then use it to find the currently logged-in user. 
 public class AuditorAwareImpl implements AuditorAware<String> {
 	@Override
