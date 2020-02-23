@@ -5,9 +5,10 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({ //
-		AppControllerIT.class, //
+		AppRepositoryIT.class, //
 		AppServiceIT.class, //
-		AppRepositoryIT.class })
+		AppControllerIT.class, //
+		UserControllerIT.class, //
+		RoleControllerIT.class })
 public class AppIT {
-
 }
