@@ -1,0 +1,6 @@
+# This file only work including the spring cloud
+spring:
+  profiles:
+    active:
+    - dev
+    - mysql
